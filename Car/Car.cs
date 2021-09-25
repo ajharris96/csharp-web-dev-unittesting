@@ -1,4 +1,6 @@
-﻿namespace CarNS
+﻿using System;
+
+namespace CarNS
 {
     public class Car
     {
@@ -17,6 +19,14 @@
             // Gas tank level defaults to a full tank
             GasTankLevel = gasTankSize;
             MilesPerGallon = milesPerGallon;
+        }
+        public void AddGas(double gas)
+        {
+            GasTankLevel += gas;
+            if (GasTankLevel > GasTankSize)
+            {
+                throw new ArgumentOutOfRangeException("Can't exceed tank size");
+            }
         }
 
         /**
